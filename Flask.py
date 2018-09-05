@@ -6,4 +6,4 @@ def iniciar():
     return render_template("Prueba.html")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
