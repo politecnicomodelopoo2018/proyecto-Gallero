@@ -1,0 +1,25 @@
+<?php
+required_once("./php/myDBC.php");
+if(isset($_SESSION['session']))
+{
+    header("location:principal.php");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Formulario</title>
+    <meta charset="utf-8">
+    <link type="text/css" href="./css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="registrar">
+<a href="/registro"</a>Registrarse</a>
+</div>
+    <div id="registrar">
+<a href="/login"</a>login</a>
+</div>
+
