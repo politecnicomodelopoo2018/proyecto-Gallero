@@ -16,7 +16,7 @@ def rergistro():
     if request.method == 'POST':
         unUsuario = Usuario()
         unUsuario.nombreUsuario = request.form.get("nombre")
-        unUsuario.apellidoUsuario = request.form.get("apellidos")
+        unUsuario.apellidoUsuario = request.form.get("apellido")
         unUsuario.mail = request.form.get("mail")
         unUsuario.contrasenia = request.form.get("contrasenia")
 
