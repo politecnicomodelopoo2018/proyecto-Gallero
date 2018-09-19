@@ -26,3 +26,4 @@ class DB (object):
 
         db.close()
         return cursor
+
