@@ -28,22 +28,15 @@ body{
 
 #contenedor{
     background-color:#BF00FF;
-    /*background-color:#356AA0;*/
-    /*box-shadow: 0 0 0 9px rgba(128,0,0,.1);*/
-    /*Margen de sombra alrededor del contenedor 8px negro*/
-    box-shadow: 3px 3px 10px 5px rgba(0,0,0,.8);
-    /*Las 3 líneas siguientes, sirven para el borde redondeado
-     * pero para diferentes navegadores*/
+    box-shadow: 3px 3px 10px 5px rgba(0,0,0,.8)
     -webkit-border-radius:5px;
     -moz-border-radius:10px;
     border-radius:10px;
 }
 
 #cabecera{
-    /*linea azul que separa logo*/
     border-bottom: 5px solid #333;
     padding-top: 5px;
-    /*color:#FFF;*/
     height:70px;
     line-height:50px;
     text-align:center;
@@ -52,7 +45,6 @@ body{
 #cuerpo{
     background:#ececec;
     border:solid #ccc;
-    /*aumentando el 2px 'aparece' un borde*/
     border-width: 2px 0;
     padding:15px 35px;
 }
