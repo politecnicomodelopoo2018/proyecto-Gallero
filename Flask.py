@@ -46,6 +46,12 @@ def rergistro():
         return render_template("home.html")
     return render_template("registro.html")
 
+@app.route("/ver_letra")
+def ver_letra():
+    return render_template('ver_letra.html')
+
+
+
 @app.route("/logout")
 def logout():
     session.pop('userid', None)
