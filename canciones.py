@@ -26,3 +26,23 @@ class Cancion(object):
             listaCanciones.append(unaCancion)
 
         return listaCanciones
+
+    @staticmethod
+    def getCancion(id):
+        listaCanciones = []
+
+        cursor = DB().run("SELECT * FROM Canciones where id_canciones = "+ str(id)+";")
+
+        for item in cursor:
+            unaCancion = Cancion()
+            unaCancion.idCancion = item['id_canciones']
+            unaCancion.nombreCancion = item['nombreCanciones']
+            unaCancion.letra = item['Letra']
+
+            for item2 in Genero.getGeneros():
+                if item2.idGenero == item['Genero_id_Genero']:
+                    unaCancion.Genero = item2
+
+            listaCanciones.append(unaCancion)
+
+        return listaCanciones

@@ -46,9 +46,15 @@ def rergistro():
         return render_template("home.html")
     return render_template("registro.html")
 
+
 @app.route("/ver_letra")
 def ver_letra():
-    return render_template('ver_letra.html')
+    if 'userid' not in session:
+        return redirect("/login")
+
+    miCancion = Cancion.getCancion(int(request.args.get("id")))
+
+    return render_template('ver_letra.html', cancion= miCancion)
 
 
 

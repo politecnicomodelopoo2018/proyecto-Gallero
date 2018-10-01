@@ -13,7 +13,7 @@
         <div style="padding-top: 10px;">
              {% for item in Canciones%}
 
-            <a href="/ver_letra">
+            <a href="/ver_letra?id={{item.idCancion}}">
             {{item.nombreCancion}}<button type="button"> Ver letra</button>
             </a>
 
