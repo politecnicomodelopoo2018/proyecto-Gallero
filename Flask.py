@@ -56,7 +56,19 @@ def ver_letra():
 
     return render_template('ver_letra.html', cancion= miCancion)
 
+@app.route("/logueo_editar_letra")
+def logueo_editar_letra():
+    if 'userid' not in session:
+        return redirect("/login")
 
+    return render_template("logueo_editar_letra.html")
+
+@app.route("/subir_cancion")
+def subir_cancion():
+    if 'userid' not in session:
+        return redirect("/login")
+
+    return render_template("subir_cancion.html")
 
 @app.route("/logout")
 def logout():
@@ -68,4 +80,11 @@ DB().setconnection('localhost','root','alumno','mydb')
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+# ALTA, BAJA Y MODIFICACION DE CANCIONES
+# BUSQUEDA DE CANCIONES
+# SOLO LOS ADMINISTRADORES VAN A PODER DE ALTA CANCIONES
+# FAVORITOS
+#COMENTARIOS
+# LOGIN USANDO SESSION
 
