@@ -2,8 +2,14 @@ from usuarios import Usuario
 from BD import DB
 from flask import *
 from canciones import Cancion
+from comentarios import Comentario
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+
+@app.route("/")
+def index ():
+    return redirect("/home")
 
 @app.route("/home")
 def home():
@@ -54,7 +60,7 @@ def ver_letra():
 
     miCancion = Cancion.getCancion(int(request.args.get("id")))
 
-    return render_template('ver_letra.html', cancion= miCancion)
+    return render_template('ver_letra.html', cancion=miCancion, usuario=session['userid'])
 
 @app.route("/logueo_editar_letra")
 def logueo_editar_letra():
@@ -69,6 +75,25 @@ def subir_cancion():
         return redirect("/login")
 
     return render_template("subir_cancion.html")
+
+@app.route("/ComentarioCancion",methods=['GET','POST'])
+def agregarComentarioCancion():
+
+    miCancion = Cancion.getCancion(int(request.form.get("id")))
+
+    if request.method == 'POST':
+        unComentario = Comentario()
+
+        unComentario.cancion = miCancion
+        unComentario.contenido = request.form.get("inputComment")
+
+        for item in Usuario.getUsuarios():
+            if item.idUsuario == session['userid']:
+                unComentario.Usuario = item
+
+        unComentario.altaComentarioCancion()
+
+    return redirect("/ver_letra?id="+str(miCancion.idCancion))
 
 @app.route("/logout")
 def logout():
@@ -87,4 +112,3 @@ if __name__ == "__main__":
 # FAVORITOS
 # COMENTARIOS
 # LOGIN USANDO SESSION
-

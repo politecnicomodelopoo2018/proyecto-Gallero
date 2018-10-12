@@ -1,11 +1,11 @@
 from BD import DB
 from canciones import *
-from usuario import *
+from usuarios import *
 
 class Comentario(object):
 
     idComentario = None
-    descripcion = None
+    contenido = None
     Usuario = None
     cancion = None
 
@@ -20,9 +20,9 @@ class Comentario(object):
             unComentario.idComentario = item['idComentario']
             unComentario.descripcion = item['descripcion']
 
-            for item2 in Pelicula.getPeliculas():
-                if item2.idTitulo == item['Pelicula_idPelicula']:
-                    unComentario.Pelicula = item2
+            for item2 in Cancion.getCanciones():
+                if item2.idTitulo == item['canciones_id_canciones']:
+                    unComentario.cancion = item2
             for item3 in Usuario.getUsuarios():
                 if item3.idUsuario == item['Usuario_idUsuario']:
                     unComentario.Usuario = item3
@@ -32,10 +32,6 @@ class Comentario(object):
         return listaComentarios
 
 
-    def altaComentarioPelicula(self):
-        c = DB().run("INSERT INTO Comentario(idComentario,descripcion,Usuario_idUsuario,Pelicula_idPelicula,Capitulo_idCapitulo) VALUES (NULL, '" + self.descripcion + "', " + str(self.Usuario.idUsuario) + "," + str(self.Pelicula.idTitulo) + ", NULL);")
+    def altaComentarioCancion(self):
+        c = DB().run("INSERT INTO Comentario(idComentario,contenido,Usuario_id_Usuario,Canciones_id_canciones) VALUES (NULL, '" + self.contenido + "', " + str(self.Usuario.idUsuario) + "," + str(self.cancion.idCancion) + ");")
 
-        self.idComentario = c.lastrowid
-
-    def altaComentarioCapitulo(self):
-DB().run("INSERT INTO Comentario(idComentario,descripcion,Usuario_idUsuario,Pelicula_idPelicula,Capitulo_idCapitulo) VALUES (NULL, '" + self.descripcion + "', " + self.Usuario.idUsuario + ", NULL," + self.Capitulo.idCapitulo+");")

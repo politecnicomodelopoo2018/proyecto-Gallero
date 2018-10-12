@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VEAMOS LA LETRA BABY</title>
+    <link href="./static/html logueo/ver_letra.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <h3>Letra de {{cancion.nombreCancion}}</h3>
+
+    {{cancion.letra}}
+    <center>
+    <a href=> eliminar cancion</a><a href="/logueo_editar_letra"> Editar cancion</a>  <a href="/logeado"> Volver atras</a>        <a href="/logout">Cerrar Sesion</a>
+    </center>
+    <h3>COMENTARIOS</h3>
+
+   </textarea>
+<div>
+                <form method="POST" action="/ComentarioCancion">
+                    <input type="hidden" name="id" value="{{cancion.idCancion}}">
+                    <input type="text" size="100" name="inputComment" id="inputComment" placeholder="Agregar Comentario" required>
+                    <button type="submit" class="float">submit</button>
+                </form>
+</div>
+</body>
+</html>

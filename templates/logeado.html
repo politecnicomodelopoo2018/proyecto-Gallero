@@ -12,11 +12,11 @@
         <h1>Canciones</h1>
         <div style="padding-top: 10px;">
              {% for item in Canciones%}
-
-            <a href="/ver_letra?id={{item.idCancion}}">
-            {{item.nombreCancion}}<button type="button"> Ver letra</button>
-            </a>
-
+             <div>
+                <a href="/ver_letra?id={{item.idCancion}}">
+                 {{item.nombreCancion}}<button type="button"> Ver letra</button>
+                </a>
+             </div>
             <button type="button">Guardar Cancion</button>
              {% endfor %}
          </div>

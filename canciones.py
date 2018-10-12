@@ -29,20 +29,18 @@ class Cancion(object):
 
     @staticmethod
     def getCancion(id):
-        listaCanciones = []
+        cursor = DB().run("SELECT * FROM Canciones where id_canciones=" + str(id) + ";")
 
-        cursor = DB().run("SELECT * FROM Canciones where id_canciones = "+ str(id)+";")
+        dict = cursor.fetchone()
 
-        for item in cursor:
-            unaCancion = Cancion()
-            unaCancion.idCancion = item['id_canciones']
-            unaCancion.nombreCancion = item['nombreCanciones']
-            unaCancion.letra = item['Letra']
+        unaCancion = Cancion()
 
-            for item2 in Genero.getGeneros():
-                if item2.idGenero == item['Genero_id_Genero']:
-                    unaCancion.Genero = item2
+        unaCancion.idCancion = dict['id_canciones']
+        unaCancion.nombreCancion = dict['nombreCanciones']
+        unaCancion.letra = dict['Letra']
 
-            listaCanciones.append(unaCancion)
+        for item2 in Genero.getGeneros():
+            if item2.idGenero == dict['Genero_id_Genero']:
+                unaCancion.Genero = item2
 
-        return listaCanciones
+        return unaCancion
