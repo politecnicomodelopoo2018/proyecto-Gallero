@@ -18,13 +18,13 @@ class Comentario(object):
         for item in cursor:
             unComentario = Comentario()
             unComentario.idComentario = item['idComentario']
-            unComentario.descripcion = item['descripcion']
+            unComentario.contenido = item['contenido']
 
             for item2 in Cancion.getCanciones():
-                if item2.idTitulo == item['canciones_id_canciones']:
+                if item2.idCancion == item['Canciones_id_canciones']:
                     unComentario.cancion = item2
             for item3 in Usuario.getUsuarios():
-                if item3.idUsuario == item['Usuario_idUsuario']:
+                if item3.idUsuario == item['Usuario_id_Usuario']:
                     unComentario.Usuario = item3
 
             listaComentarios.append(unComentario)

@@ -60,7 +60,7 @@ def ver_letra():
 
     miCancion = Cancion.getCancion(int(request.args.get("id")))
 
-    return render_template('ver_letra.html', cancion=miCancion, usuario=session['userid'])
+    return render_template('ver_letra.html', cancion=miCancion, usuario=session['userid'], comentarios=Comentario.getComentarioscanciones(miCancion.idCancion))
 
 @app.route("/logueo_editar_letra")
 def logueo_editar_letra():
@@ -110,5 +110,5 @@ if __name__ == "__main__":
 # BUSQUEDA DE CANCIONES
 # SOLO LOS ADMINISTRADORES VAN A PODER DE ALTA CANCIONES
 # FAVORITOS
-# COMENTARIOS
-# LOGIN USANDO SESSION
+# COMENTARIOS listo
+# LOGIN USANDO SESSION  listo
