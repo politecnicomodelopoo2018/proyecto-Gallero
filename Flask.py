@@ -3,6 +3,7 @@ from BD import DB
 from flask import *
 from canciones import Cancion
 from comentarios import Comentario
+from Usuario_has_canciones import Uhc
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
@@ -67,7 +68,11 @@ def logueo_editar_letra():
     if 'userid' not in session:
         return redirect("/login")
 
-    return render_template("logueo_editar_letra.html")
+    idcancion = request.args.get("idCancion")
+    cancion = Cancion()
+    cancion.getCancion(idcancion)
+
+    return render_template("logueo_editar_letra.html", cancion=cancion)
 
 @app.route("/subir_cancion")
 def subir_cancion():
@@ -100,6 +105,13 @@ def logout():
     session.pop('userid', None)
     return redirect('/home')
 
+@app.route("/GuardarUhc",methods=['GET','POST'])
+def GuardarUhc():
+    UnUsuario = request.args.get("Usuario")
+    UnaCancion = request.args.get("Cancion")
+    UnUhc = Uhc()
+    UnUhc.AgregarUhc(UnUsuario, UnaCancion)
+
 DB().setconnection('localhost','root','alumno','mydb')
 
 
@@ -112,3 +124,6 @@ if __name__ == "__main__":
 # FAVORITOS
 # COMENTARIOS listo
 # LOGIN USANDO SESSION  listo
+
+
+

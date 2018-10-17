@@ -14,11 +14,14 @@
              {% for item in Canciones%}
              <div>
                 <a href="/ver_letra?id={{item.idCancion}}">
-                 {{item.nombreCancion}}<button type="button"> Ver letra</button>
+                 {{item.nombreCancion}}
                 </a>
              </div>
-            <button type="button">Guardar Cancion</button>
+            <a href="/GuardarUhc?Cancion={{item.idCancion}}&Usuario={{Usuario.idUsuario}}">Guardar Cancion</a>
+            <br>
+            <br>
              {% endfor %}
+            <br>
          </div>
         <a href="/subir_cancion">Subir cancion</a>
         <a href="/logout">Cerrar Sesion</a>

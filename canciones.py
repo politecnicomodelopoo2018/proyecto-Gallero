@@ -44,3 +44,6 @@ class Cancion(object):
                 unaCancion.Genero = item2
 
         return unaCancion
+
+    def UpdateCancion(self, idcancion, letranueva):
+        DB().run("UPDATE Canciones SET Letra = ('%s') WHERE id_canciones = ('%s')" % (letranueva, idcancion))
