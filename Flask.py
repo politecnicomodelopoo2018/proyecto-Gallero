@@ -32,7 +32,7 @@ def login():
 def logeado():
     if 'userid' not in session:
         return redirect("/login")
-    return render_template("logeado.html", Usuario=Usuario.getUsuarioPorId(session['userid']), Canciones=Cancion.getCanciones())
+    return render_template("logeado.html", Usuario=Usuario.getUsuarioPorId(session['userid']), Canciones=Cancion.getCanciones(), misCanciones=Uhc.getUhc(session['userid']))
 
 
 @app.route("/registro",  methods=['GET', 'POST'])
@@ -111,6 +111,7 @@ def GuardarUhc():
     UnaCancion = request.args.get("Cancion")
     UnUhc = Uhc()
     UnUhc.AgregarUhc(UnUsuario, UnaCancion)
+    return redirect("/logeado")
 
 DB().setconnection('localhost','root','alumno','mydb')
 
@@ -118,10 +119,8 @@ DB().setconnection('localhost','root','alumno','mydb')
 if __name__ == "__main__":
     app.run(debug=True)
 
-# ALTA, BAJA Y MODIFICACION DE CANCIONES
-# BUSQUEDA DE CANCIONES
-# SOLO LOS ADMINISTRADORES VAN A PODER DE ALTA CANCIONES
-# FAVORITOS
+# ALTA, BAJA Y MODIFICACION DE CANCIONES SOLO LOS ADMINISTRADORES VAN A PODER DE ALTA CANCIONES
+# FAVORITOS listo
 # COMENTARIOS listo
 # LOGIN USANDO SESSION  listo
 

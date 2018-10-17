@@ -18,3 +18,19 @@ class Uhc (object):
         self.SetUsuario(Usuario)
         self.SetCancion(Cancion)
         self.Insert()
+
+    @staticmethod
+    def getUhc(id):
+        listaUhc = []
+
+        cursor = DB().run("SELECT * FROM CancionesGuardadas WHERE Usuario_id_Usuario = "+str(id)+";")
+
+        for item in cursor:
+            unaCancion = Uhc()
+            unaCancion.Usuario = item['Usuario_id_Usuario']
+            unaCancion.Cancion = item['Canciones_id_canciones']
+
+            if unaCancion not in listaUhc:
+                listaUhc.append(unaCancion)
+
+        return listaUhc

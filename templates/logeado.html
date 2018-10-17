@@ -8,6 +8,9 @@
         <div> Hola {{Usuario.nombreUsuario}} {{Usuario.apellidoUsuario}}</div>
         <h1>Mis Canciones</h1>
 
+        {% for item in misCanciones%}
+            {{item.Cancion}}
+        {% endfor %}
 
         <h1>Canciones</h1>
         <div style="padding-top: 10px;">
