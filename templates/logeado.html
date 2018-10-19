@@ -17,7 +17,7 @@
              {% for item in Canciones%}
              <div>
                 <a href="/ver_letra?id={{item.idCancion}}">
-                 {{item.nombreCancion}}
+                 {{item.idCancion}}//{{item.nombreCancion}}
                 </a>
              </div>
             <a href="/GuardarUhc?Cancion={{item.idCancion}}&Usuario={{Usuario.idUsuario}}">Guardar Cancion</a>

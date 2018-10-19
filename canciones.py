@@ -27,6 +27,11 @@ class Cancion(object):
 
         return listaCanciones
 
+    def subida_cancion(self):
+        DB().run( "INSERT INTO Canciones(id_canciones,nombre,letra,Genero_id_Genero) VALUES (NULL,'" + self.nombreCancion + "','" + self.letra + "','" +
+            self.Genero + "');")
+
+
     @staticmethod
     def getCancion(id):
         cursor = DB().run("SELECT * FROM Canciones where id_canciones=" + str(id) + ";")

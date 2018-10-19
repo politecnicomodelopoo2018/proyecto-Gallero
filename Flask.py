@@ -53,6 +53,19 @@ def rergistro():
         return render_template("home.html")
     return render_template("registro.html")
 
+@app.route("/subir_cancion",  methods=['GET', 'POST'])
+def subida_cancion():
+    if request.method == 'POST':
+        unaCancion = Cancion()
+        unaCancion.nombreCancion = request.form.get("nueva cancion")
+        unaCancion.letra = request.form.get("submit")
+        unaCancion.Genero = request.form.get("genero")
+
+        unaCancion.subida_cancion()
+
+    return render_template("logeado.html")
+
+
 
 @app.route("/ver_letra")
 def ver_letra():
@@ -123,6 +136,7 @@ if __name__ == "__main__":
 # FAVORITOS listo
 # COMENTARIOS listo
 # LOGIN USANDO SESSION  listo
+
 
 
 
