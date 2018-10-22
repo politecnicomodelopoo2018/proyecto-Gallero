@@ -58,12 +58,12 @@ def subida_cancion():
     if request.method == 'POST':
         unaCancion = Cancion()
         unaCancion.nombreCancion = request.form.get("nueva cancion")
-        unaCancion.letra = request.form.get("submit")
+        unaCancion.letra = request.form.get("pepe")
         unaCancion.Genero = request.form.get("genero")
 
         unaCancion.subida_cancion()
 
-    return render_template("logeado.html")
+    return render_template("subir_cancion.html")
 
 
 
@@ -86,13 +86,6 @@ def logueo_editar_letra():
     cancion.getCancion(idcancion)
 
     return render_template("logueo_editar_letra.html", cancion=cancion)
-
-@app.route("/subir_cancion")
-def subir_cancion():
-    if 'userid' not in session:
-        return redirect("/login")
-
-    return render_template("subir_cancion.html")
 
 @app.route("/ComentarioCancion",methods=['GET','POST'])
 def agregarComentarioCancion():
